@@ -95,50 +95,61 @@
                         </div>
                         <div class="card-body">
                             <div class="container">
-                                <a href="{{route('form.studyform')}}"><div class="btn btn-primary mb-3">Tambahkan Data</div></a>
-                                <table class="table table-striped table-bordered">
+                                
+                               
+                                <!-- Search and Add button container -->
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <!-- Search input with icon -->
+                                
+                                    <div class="d-flex align-items-center gap-2">
+                                        <input type="text" id="myInput" class="form-control pl-5" placeholder="Search for names..." onkeyup="myFunction()">
+                                        <i class="fas fa-search"></i>
+                                    </div>
+                                
+                                    <!-- Add button with icon -->
+                                    <a href="{{route('form.article')}}" class="btn btn-primary d-flex text-align-center gap-2">
+                                        <i class="fas fa-plus"></i>
+                                        <span>Tambahkan Data</span>
+                                    </a>
+                                </div>
+                                
+                                <table id="tableArticle" class="table table-striped table-bordered">
                                     <thead class="table-dark">
                                         <tr>
                                             <th>#</th>
                                             <th>Image</th>
-                                            <th>Bidang</th>
                                             <th>Title</th>
+                                            <th>Deskripsi</th>
                                             <th>Author</th>
                                             <th>Date</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($posts as $index => $study)
+                                        @foreach ($posts as $index => $article)
                                             <tr>
                                                 <td>{{ $index + 1 }}</td>
                                                 <td>
-                                                    @if ($study->image)
-                                                        <img src="{{ asset('storage/'.$study->image) }}" alt="Image" width="50">
+                                                    @if ($article->image)
+                                                        <img src="{{ asset('storage/'.$article->image) }}" alt="Image" width="50">
                                                     @else
                                                         <img src="https://dummyimage.com/50x50/162978/ffffff"
                                                             alt="Image" width="50">
                                                     @endif
                                                 </td>
-                                                <td>
-                                                    @if ($study->name)
-                                                        {{ $study->name }}
-                                                    @else
-                                                        -
-                                                    @endif
-                                                </td>
-                                                <td>{{ $study->title }}</td>
-                                                <td>{{ $study->author->name }}</td>
-                                                <td>{{ \Carbon\Carbon::parse($study->created_at)->format('F j, Y') }}
+                                                <td>{{ $article->title }}</td>
+                                                <td>{{ $article->description }}</td>
+                                                <td>{{ $article->author->name }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($article->created_at)->format('F j, Y') }}
                                                 </td>
                                                 <td class="align-middle text-center">
                                                   <div class="d-inline-flex gap-1">
-                                                      <a href="{{ route('studypost.edit', $study->id) }}"
+                                                      <a href="{{ route('article.edit', $article->id) }}"
                                                           class="btn btn-sm btn-outline-primary" title="Edit">
                                                           <i class="bi bi-pencil-square"></i>
                                                       </a>
                                               
-                                                      <form action="{{ route('studypost.destroy', $study->id) }}"
+                                                      <form action="{{ route('article.destroy', $article->id) }}"
                                                           method="POST"
                                                           onsubmit="return confirm('Yakin ingin menghapus post ini?')">
                                                           @csrf
@@ -232,6 +243,28 @@
             toast.show();
         });
     });
+
+    function myFunction() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("tableArticle");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[2];
+            if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+            }
+        }
+        }
 </script>
 
 
