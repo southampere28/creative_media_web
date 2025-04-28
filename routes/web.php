@@ -1,0 +1,141 @@
+<?php
+
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ContactController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\StudyController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TestimoniesController;
+use App\Http\Controllers\studentWorksController;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
+Route::get('/', [HomeController::class, 'index'])->name('index');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+
+// ================ route untuk bidang studi ============================================================================
+
+// form bidang study admin only
+Route::view('/formstudy', 'form.studyform')->name('form.studyform');
+
+// CRUD request bidang study
+Route::post('/studypost', [StudyController::class, 'store'])->name('studypost.store');
+Route::put('/updatestudypost/{id}', [StudyController::class, 'update'])->name('studypost.update');
+Route::delete('/destroystudypost/{id}', [StudyController::class, 'destroy'])->name('studypost.destroy');
+
+// Edit Link
+Route::get('/studypost/{id}', [StudyController::class, 'edit'])->name('studypost.edit');
+
+// show detail study post
+Route::get('/detailstudy/{slug}', [StudyController::class, 'show'])->name('detail.study');
+
+// list bidang study admin view
+Route::get('/study', [StudyController::class, 'index'])->name('adminview.study');
+
+// =======================================================================================================================
+
+// ============================== route untuk services ===================================================================
+
+// form services admin only
+Route::view('/formservices', 'form.serviceform')->name('form.serviceform');
+
+// CRUD request services
+Route::post('/servicepost', [ServiceController::class, 'store'])->name('servicepost.store');
+Route::put('/updateservice/{id}', [ServiceController::class, 'update'])->name('servicepost.update');
+Route::delete('/destroyservice/{id}', [ServiceController::class, 'destroy'])->name('servicepost.destroy');
+
+// Edit Link
+Route::get('/services/{id}', [ServiceController::class, 'edit'])->name('services.edit');
+
+// show detail study post
+Route::get('/detailservice/{slug}', [ServiceController::class, 'show'])->name('detail.service');
+
+// list services admin view
+Route::get('/services', [ServiceController::class, 'index'])->name('adminview.services');
+
+// ======================================================================================================================
+
+// ==================================== route untuk karya siswa =================================================
+
+// view karya siswa
+Route::get('/karyasiswa',[studentWorksController::class, 'showall'])->name('pageview.karyasiswa');
+
+// form karya siswa admin only
+Route::view('/formstudentwork', 'form.studentworkform')->name('form.studentwork');
+
+// CRUD request karya siswa
+Route::post('/studentworkpost', [studentWorksController::class, 'store'])->name('studentwork.store');
+Route::put('/updatestudentwork/{id}', [studentWorksController::class, 'update'])->name('studentwork.update');
+Route::delete('/destroystudentwork/{id}', [studentWorksController::class, 'destroy'])->name('studentwork.destroy');
+
+// Edit Link
+Route::get('/studentworks/{id}', action: [studentWorksController::class, 'edit'])->name('studentwork.edit');
+
+// list karya siswa admin view
+Route::get('/studentworks', [studentWorksController::class, 'index'])->name('adminview.karyasiswa');
+
+// ==============================================================================================================
+
+// ======================================= route untuk testimoni ==================================================
+
+// view testimoni
+// Route::get('/testimoni-alumni',[studentWorksController::class, 'showall'])->name('pageview.testimoni'); // Undone
+
+// form testimoni admin only
+Route::view('/formtestimoni', 'form.testimoniform')->name('form.testimoni');
+
+// CRUD request testimoni
+Route::post('/testimonipost', [TestimoniesController::class, 'store'])->name('testimoni.store');
+Route::put('/updatetestimoni/{id}', [TestimoniesController::class, 'update'])->name('testimoni.update');
+Route::delete('/destroytestimoni/{id}', [TestimoniesController::class, 'destroy'])->name('testimoni.destroy');
+
+// Edit Link
+Route::get(uri: '/testimonies/{id}', action: [TestimoniesController::class, 'edit'])->name('testimonies.edit');
+
+// list testimoni admin view
+Route::get('/testimonies', [TestimoniesController::class, 'index'])->name('adminview.testimoni');
+
+// ================================================================================================================
+
+// ======================================= route untuk contact ==================================================
+
+// form contact admin only
+Route::view('/formcontact', 'form.contactform')->name('form.contact');
+
+// CRUD request contact
+Route::post('/contactpost', [ContactController::class, 'store'])->name('contact.store');
+Route::put('/updatecontact/{id}', [ContactController::class, 'update'])->name('contact.update');
+Route::delete('/destroycontact/{id}', [ContactController::class, 'destroy'])->name('contact.destroy');
+
+// Edit Link
+Route::get(uri: '/contacts/{id}', action: [ContactController::class, 'edit'])->name('contacts.edit');
+
+// list contact admin view
+Route::get('/contacts', [ContactController::class, 'index'])->name('adminview.contact');
+
+
+// ================================================================================================================
+
+// ======================================= route untuk article ==================================================
+
+// list contact admin view
+Route::get('/articles', [ArticleController::class, 'index'])->name('adminview.article');
+
+// ================================================================================================================
+
+
+// testing only
+// Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+// Route::get('/allpost', [PostController::class, 'index']);
