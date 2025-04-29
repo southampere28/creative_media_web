@@ -3,7 +3,7 @@
 <!-- [Head] start -->
 
 <head>
-    <title>admin-client</title>
+    <title>Teams</title>
     <!-- [Meta] -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
@@ -91,63 +91,69 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-header text-center">
-                            <h2>Client / Partner</h2>
+                            <h2>Daftar Anggota / Staff Perusahaan</h2>
                         </div>
                         <div class="card-body">
                             <div class="container">
-
+                                
                                 <!-- Search and Add button container -->
                                 <div class="d-flex justify-content-between align-items-center mb-4">
                                     <!-- Search input with icon -->
                                 
                                     <div class="d-flex align-items-center gap-2">
-                                        <input type="text" id="myInput" class="form-control pl-5" placeholder="Cari Nama Client..." onkeyup="myFunction()">
+                                        <input type="text" id="myInput" class="form-control pl-5" placeholder="Cari nama staff..." onkeyup="myFunction()">
                                         <i class="fas fa-search"></i>
                                     </div>
                                 
                                     <!-- Add button with icon -->
-                                    <a href="{{route('form.client')}}" class="btn btn-primary d-flex text-align-center gap-2">
+                                    <a href="{{route('form.team')}}" class="btn btn-primary d-flex text-align-center gap-2">
                                         <i class="fas fa-plus"></i>
                                         <span>Tambahkan Data</span>
                                     </a>
                                 </div>
-
-                                {{-- <a href="{{route('form.client')}}"><div class="btn btn-primary mb-3">Tambahkan Data</div></a> --}}
-                                <table id="tableClient" class="table table-striped table-bordered">
+                                
+                                {{-- <a href="{{route('form.team')}}"><div class="btn btn-primary mb-3">Tambahkan Data</div></a> --}}
+                                <table id="tableTeam" class="table table-striped table-bordered">
                                     <thead class="table-dark">
                                         <tr>
                                             <th>#</th>
-                                            <th>Image</th>
+                                            <th>Gambar</th>
                                             <th>Nama</th>
+                                            <th>Role</th>
+                                            <th>Deskripsi</th>
                                             <th>Author</th>
                                             <th>Date</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($posts as $index => $study)
+                                        @foreach ($posts as $index => $team)
                                             <tr>
                                                 <td>{{ $index + 1 }}</td>
                                                 <td>
-                                                    @if ($study->image)
-                                                        <img src="{{ asset('storage/'.$study->image) }}" alt="Image" width="50">
+                                                    @if ($team->image)
+                                                        <img src="{{ asset('storage/'.$team->image) }}" alt="Image" width="50">
                                                     @else
                                                         <img src="https://dummyimage.com/50x50/162978/ffffff"
                                                             alt="Image" width="50">
                                                     @endif
                                                 </td>
-                                                <td>{{ $study->nama }}</td>
-                                                <td>{{ $study->author->name }}</td>
-                                                <td>{{ \Carbon\Carbon::parse($study->created_at)->format('F j, Y') }}
+                                                <td>
+                                                    {{$team->name}}
+                                                </td>
+                                                <td>{{ $team->role }}</td>
+                                                <td>{{ $team->description }}</td>
+                                                <td>{{ $team->author->name }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($team->created_at)->format('F j, Y') }}
                                                 </td>
                                                 <td class="align-middle text-center">
                                                   <div class="d-inline-flex gap-1">
-                                                      <a href="{{ route('client.edit', $study->id) }}"
+                                                      <a href="{{ route('team.edit', $team->id) }}"
                                                           class="btn btn-sm btn-outline-primary" title="Edit">
                                                           <i class="bi bi-pencil-square"></i>
                                                       </a>
                                               
-                                                      <form action="{{ route('client.destroy', $study->id) }}"
+                                                      <form action="{{ route('team.destroy', $team->id) }}"
                                                           method="POST"
                                                           onsubmit="return confirm('Yakin ingin menghapus post ini?')">
                                                           @csrf
@@ -164,6 +170,7 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+
                             </div>
                         </div>
                     </div>
@@ -239,7 +246,7 @@
         var input, filter, table, tr, td, i, txtValue;
         input = document.getElementById("myInput");
         filter = input.value.toUpperCase();
-        table = document.getElementById("tableClient");
+        table = document.getElementById("tableTeam");
         tr = table.getElementsByTagName("tr");
 
         // Loop through all table rows, and hide those who don't match the search query

@@ -166,14 +166,6 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-
-                                {{-- Pagination --}}
-                                <div class="d-flex justify-content-center">
-                                    {{-- {{ $posts->links() }} --}}
-                                    pagination here
-                                </div>
-
-
                             </div>
                         </div>
                     </div>

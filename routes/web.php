@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\TeamController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StudyController;
@@ -130,8 +132,58 @@ Route::get('/contacts', [ContactController::class, 'index'])->name('adminview.co
 
 // ======================================= route untuk article ==================================================
 
+// form article admin only
+Route::view('/formarticle', 'form.articleform')->name('form.article');
+
+// CRUD request articles
+Route::post('/articlepost', [ArticleController::class, 'store'])->name('article.store');
+Route::put('/updatearticle/{id}', [ArticleController::class, 'update'])->name('article.update');
+Route::delete('/destroyarticle/{id}', [ArticleController::class, 'destroy'])->name('article.destroy');
+
+// Edit Link
+Route::get(uri: '/articles/{id}', action: [ArticleController::class, 'edit'])->name('article.edit');
+
 // list contact admin view
 Route::get('/articles', [ArticleController::class, 'index'])->name('adminview.article');
+
+// ================================================================================================================
+
+
+// ======================================= route untuk Client ==================================================
+
+// form client admin only
+Route::view('/formclient', 'form.clientform')->name('form.client');
+
+// CRUD request client
+Route::post('/clientpost', [ClientController::class, 'store'])->name('client.store');
+Route::put('/updateclient/{id}', [ClientController::class, 'update'])->name('client.update');
+Route::delete('/destroyclient/{id}', [ClientController::class, 'destroy'])->name('client.destroy');
+
+// Edit Link
+Route::get(uri: '/clients/{id}', action: [ClientController::class, 'edit'])->name('client.edit');
+
+// list client admin view
+Route::get('/clients', [ClientController::class, 'index'])->name(name: 'adminview.client');
+
+
+// ================================================================================================================
+
+// ======================================= route untuk teams ==================================================
+
+// form team admin only
+Route::view('/formteam', 'form.teamform')->name('form.team');
+
+// CRUD request team
+Route::post('/teampost', [TeamController::class, 'store'])->name('team.store');
+Route::put('/updateteam/{id}', [TeamController::class, 'update'])->name('team.update');
+Route::delete('/destroyteam/{id}', [TeamController::class, 'destroy'])->name('team.destroy');
+
+// Edit Link
+Route::get(uri: '/teams/{id}', action: [TeamController::class, 'edit'])->name('team.edit');
+
+// list team admin view
+Route::get('/teams', [TeamController::class, 'index'])->name(name: 'adminview.team');
+
 
 // ================================================================================================================
 

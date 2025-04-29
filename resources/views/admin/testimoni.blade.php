@@ -95,8 +95,24 @@
                         </div>
                         <div class="card-body">
                             <div class="container">
-                                <a href="{{route('form.testimoni')}}"><div class="btn btn-primary mb-3">Tambahkan Data</div></a>
-                                <table class="table table-striped table-bordered">
+                                
+                                <!-- Search and Add button container -->
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <!-- Search input with icon -->
+                                
+                                    <div class="d-flex align-items-center gap-2">
+                                        <input type="text" id="myInput" class="form-control pl-5" placeholder="Search for names..." onkeyup="myFunction()">
+                                        <i class="fas fa-search"></i>
+                                    </div>
+                                
+                                    <!-- Add button with icon -->
+                                    <a href="{{route('form.testimoni')}}" class="btn btn-primary d-flex text-align-center gap-2">
+                                        <i class="fas fa-plus"></i>
+                                        <span>Tambahkan Data</span>
+                                    </a>
+                                </div>
+                                
+                                <table id="tableTestimoni" class="table table-striped table-bordered">
                                     <thead class="table-dark">
                                         <tr>
                                             <th>#</th>
@@ -157,14 +173,6 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-
-                                {{-- Pagination --}}
-                                <div class="d-flex justify-content-center">
-                                    {{-- {{ $posts->links() }} --}}
-                                    pagination here
-                                </div>
-
-
                             </div>
                         </div>
                     </div>
@@ -234,6 +242,28 @@
             toast.show();
         });
     });
+
+    function myFunction() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("tableTestimoni");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[2];
+            if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+            }
+        }
+        }
 </script>
 
 

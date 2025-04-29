@@ -23,44 +23,53 @@
               </li>
               <li class="pc-item">
                 <a href="{{route('adminview.study')}}" class="pc-link">
-                  <span class="pc-micon"><i class="ti ti-typography"></i></span>
-                  <span class="pc-mtext">Bidang Studi</span>
+                    <span class="pc-micon"><i class="ti ti-book"></i></span>
+                    <span class="pc-mtext">Bidang Studi</span>
                 </a>
-              </li>
-              <li class="pc-item">
+            </li>
+            <li class="pc-item">
                 <a href="{{route('adminview.services')}}" class="pc-link">
-                  <span class="pc-micon"><i class="ti ti-color-swatch"></i></span>
-                  <span class="pc-mtext">Layanan Jasa</span>
+                    <span class="pc-micon"><i class="ti ti-briefcase"></i></span>
+                    <span class="pc-mtext">Layanan Jasa</span>
                 </a>
-              </li>
-              <li class="pc-item">
+            </li>
+            <li class="pc-item">
                 <a href="{{route('adminview.karyasiswa')}}" class="pc-link">
-                  <span class="pc-micon"><i class="ti ti-plant-2"></i></span>
-                  <span class="pc-mtext">Karya Siswa</span>
+                    <span class="pc-micon"><i class="ti ti-brush"></i></span>
+                    <span class="pc-mtext">Karya Siswa</span>
                 </a>
-              </li>
-
-              <li class="pc-item">
+            </li>
+            <li class="pc-item">
                 <a href="{{route('adminview.testimoni')}}" class="pc-link">
-                  <span class="pc-micon"><i class="ti ti-plant-2"></i></span>
-                  <span class="pc-mtext">Testimoni</span>
+                    <span class="pc-micon"><i class="ti ti-message-dots"></i></span>
+                    <span class="pc-mtext">Testimoni</span>
                 </a>
-              </li>
-
-              <li class="pc-item">
+            </li>
+            <li class="pc-item">
                 <a href="{{route('adminview.contact')}}" class="pc-link">
-                  <span class="pc-micon"><i class="ti ti-plant-2"></i></span>
-                  <span class="pc-mtext">Kontak Perusahaan</span>
+                    <span class="pc-micon"><i class="ti ti-phone"></i></span>
+                    <span class="pc-mtext">Kontak Perusahaan</span>
                 </a>
-              </li>
-
-              <li class="pc-item">
+            </li>
+            <li class="pc-item">
                 <a href="{{route('adminview.article')}}" class="pc-link">
-                  <span class="pc-micon"><i class="ti ti-plant-2"></i></span>
-                  <span class="pc-mtext">Articles</span>
+                    <span class="pc-micon"><i class="ti ti-news"></i></span>
+                    <span class="pc-mtext">Articles</span>
                 </a>
-              </li>
-      
+            </li>
+            <li class="pc-item">
+              <a href="{{route('adminview.client')}}" class="pc-link">
+                  <span class="pc-micon"><i class="ti ti-medal"></i></span>
+                  <span class="pc-mtext">Client/Partner</span>
+              </a>
+            </li>          
+            <li class="pc-item">
+                <a href="{{route('adminview.team')}}" class="pc-link">
+                    <span class="pc-micon"><i class="ti ti-users"></i></span>
+                    <span class="pc-mtext">Daftar Anggota</span>
+                </a>
+            </li>
+            
               <li class="pc-item pc-caption">
                 <label>Pages</label>
                 <i class="ti ti-news"></i>
