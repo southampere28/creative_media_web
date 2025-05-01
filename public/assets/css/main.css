@@ -1511,8 +1511,8 @@ section,
 }
 
 .testimonials .testimonial-item .profile .profile-img {
-  width: 60px;
-  height: 60px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -1529,7 +1529,8 @@ section,
 }
 
 .testimonials .testimonial-item .featured-img-wrapper {
-  min-height: 400px;
+  width: 200px;
+  height: 200px;
   position: relative;
   overflow: hidden;
   border-radius: 16px;

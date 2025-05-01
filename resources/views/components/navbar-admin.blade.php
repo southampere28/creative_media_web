@@ -69,23 +69,6 @@
                     <span class="pc-mtext">Daftar Anggota</span>
                 </a>
             </li>
-            
-              <li class="pc-item pc-caption">
-                <label>Pages</label>
-                <i class="ti ti-news"></i>
-              </li>
-              <li class="pc-item">
-                <a href="../pages/login.html" class="pc-link">
-                  <span class="pc-micon"><i class="ti ti-lock"></i></span>
-                  <span class="pc-mtext">Login</span>
-                </a>
-              </li>
-              <li class="pc-item">
-                <a href="../pages/register.html" class="pc-link">
-                  <span class="pc-micon"><i class="ti ti-user-plus"></i></span>
-                  <span class="pc-mtext">Register</span>
-                </a>
-              </li>
       
               <li class="pc-item pc-caption">
                 <label>Other</label>
@@ -127,11 +110,15 @@
                 </ul>
               </li>
               <li class="pc-item">
-                <a href="../other/sample-page.html" class="pc-link">
-                  <span class="pc-micon"><i class="ti ti-brand-chrome"></i></span>
-                  <span class="pc-mtext">Sample page</span>
+                <a href="#" class="pc-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <span class="pc-micon"><i class="ti ti-logout"></i></span>
+                    <span class="pc-mtext">Logout</span>
                 </a>
-              </li>
+                <form id="logout-form" action="{{ route('request.logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </li>
+            
             </ul>
           </div>
         </div>

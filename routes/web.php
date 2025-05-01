@@ -13,16 +13,6 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TestimoniesController;
 use App\Http\Controllers\studentWorksController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
 
@@ -33,11 +23,11 @@ Route::get('/detailservice/{slug}', [ServiceController::class, 'show'])->name('d
 // view karya siswa
 Route::get('/karyasiswa', [studentWorksController::class, 'showall'])->name('pageview.karyasiswa');
 // view testimoni
-// Route::get('/testimoni-alumni',[studentWorksController::class, 'showall'])->name('pageview.testimoni'); // Undone
-// view contact
-// view contact here for all
+Route::get('/testimoni-alumni',[HomeController::class, 'testimoni'])->name('pageview.testimoni');
 // view article
-// view article here for all
+Route::get('/article',[ArticleController::class, 'showall'])->name('pageview.article');
+Route::get('/article-detail/{slug}',[ArticleController::class, 'show'])->name('detail.article');
+
 
 
 Route::middleware(['guest'])->group(function () {

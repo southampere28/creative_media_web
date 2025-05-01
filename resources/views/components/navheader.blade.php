@@ -11,9 +11,6 @@
         <ul>
           <li><a href="#hero" class="active">Home</a></li>
           <li><a href="#about">About</a></li>
-          <li><a href="#resume">Resume</a></li>
-          <li><a href="{{route('pageview.karyasiswa')}}" target="_blank">Karya Siswa</a></li>
-          {{-- <li><a href="#services">Services</a></li> --}}
           <li class="dropdown"><a href="#services"><span>Services</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="{{ route('detail.service', 'Course & Trainings') }}">Course & Trainings</a></li>
@@ -41,17 +38,28 @@
               <li><a href="{{ route('detail.study', 'Photography') }}">Photography</a></li>
             </ul>
           </li>
+          <li><a href="{{route('pageview.karyasiswa')}}" target="_blank">Karya Siswa</a></li>
+          <li><a href="{{route('pageview.testimoni')}}">Testimoni</a></li>
+          <li><a href="{{route('pageview.article')}}">Artikel</a></li>
           <li><a href="#contact">Contact</a></li>
+          @auth
+            
+            <div class="me-4">
+              <li>
+                <a href="{{route('dashboard.index')}}"><button class="btn btn-primary btn-sm">dashboard</button></a>
+              </li>
+            </div>
+          @else
+            
+          <div class="me-4">
+            <li>
+              <a href="{{route('form.login')}}"><button class="btn btn-primary btn-sm" style="background-color: #fb7703; border: none">login</button></a>
+            </li>  
+            </div>
+          @endauth
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
-
-      <div class="header-social-links">
-        <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
-        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-      </div>
 
     </div>
   </header>

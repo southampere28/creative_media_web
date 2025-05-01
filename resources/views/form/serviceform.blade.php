@@ -125,8 +125,11 @@
                                         <div class="form-group mb-3">
                                             <label for="validationCustom04" class="form-label">Detail Layanan</label>
                                             <textarea class="form-control" id="validationCustom03"
-                                                name="service_detail" placeholder="maksimal 6 detail. Pisahkan Service dengan koma contoh: include konsultasi, desain bisa kustom, testing, deployment & support."
+                                                name="service_detail" placeholder="free konsultasi, app design, testing, deployment & support."
                                                 >{{ isset($edit->id) ? $edit->service_detail : '' }}</textarea>
+                                                <small class="form-text text-muted">
+                                                    maksimal 6 detail. Pisahkan Detail Layanan dengan koma contoh: include konsultasi, desain bisa kustom, testing, deployment & support.
+                                                </small>
                                                 @error('service_detail')
                                                     <span class="text-danger">{{$message}}</span>
                                                 @enderror

@@ -22,4 +22,11 @@ class HomeController extends Controller
         $contactposts = Contact::get();
         return view('index', compact('studyposts', 'serviceposts', 'testimoniposts', 'clientposts', 'teamposts', 'contactposts'));
     }
+
+    public function testimoni()
+    {
+        $videotestimoniposts = Testimoni::where('type', 'video')->get();
+        $texttestimoniposts = Testimoni::where('type', 'message')->get();
+        return view('detail.testimoni', compact('texttestimoniposts', 'videotestimoniposts'));
+    }
 }

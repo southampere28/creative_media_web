@@ -36,6 +36,29 @@
 <!-- [Head] end -->
 <!-- [Body] Start -->
 
+<!-- Flash Messages -->
+@if (session('success'))
+<div class="toast align-items-center text-white bg-success border-0 position-fixed bottom-0 end-0 mb-4 me-4" role="alert" aria-live="assertive" aria-atomic="true" style="z-index: 1050;">
+    <div class="d-flex">
+        <div class="toast-body">
+            {{ session('success') }}
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+</div>
+@endif
+
+@if (session('error'))
+<div class="toast align-items-center text-white bg-danger border-0 position-fixed bottom-0 end-0 mb-4 me-4" role="alert" aria-live="assertive" aria-atomic="true" style="z-index: 1050;">
+    <div class="d-flex">
+        <div class="toast-body">
+            {{ session('error') }}
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+</div>
+@endif
+
 <body data-pc-preset="preset-1" data-pc-direction="ltr" data-pc-theme="light">
     <!-- [ Pre-loader ] start -->
     <div class="loader-bg">
@@ -414,7 +437,14 @@
         font_change("Public-Sans");
     </script>
 
-
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const toastElList = [].slice.call(document.querySelectorAll('.toast'))
+            toastElList.forEach(toastEl => {
+                new bootstrap.Toast(toastEl).show();
+            });
+        });
+    </script>
 
 </body>
 <!-- [Body] end -->
