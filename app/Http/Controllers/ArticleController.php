@@ -20,6 +20,12 @@ class ArticleController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+
+     public function showall() {
+        $posts = Article::get();
+        return view('detail.artikel', compact('posts'));
+     }
+
     public function create()
     {
         //
@@ -65,9 +71,15 @@ class ArticleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(article $article)
+    public function show($slug)
     {
-        //
+        $posts = Article::where('id', $slug)->latest()->get();
+
+        if ($posts->isEmpty()) {
+            abort(404);
+        }
+
+        return view('detail.detailartikel', compact('posts', 'slug'));
     }
 
     /**
